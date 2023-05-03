@@ -1,4 +1,4 @@
-import Todo from './todo';
+import Todo from './todo.js';
 
 // Display list
 const display = () => {
