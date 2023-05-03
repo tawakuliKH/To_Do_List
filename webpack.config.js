@@ -16,13 +16,14 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   optimization: {
     runtimeChunk: 'single',
   },
+
   module: {
     rules: [
       {
