@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --open",
-     "build": "webpack"
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack-dev-server": "^4.11.1"
