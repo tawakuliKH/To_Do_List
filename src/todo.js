@@ -37,17 +37,21 @@ export default class todo {
     });
   }
 
+  fixLength = () => {
+    let lenght = 0;
+    this.tasks.forEach((item) => {
+      item.desc = item.desc;
+      item.index = lenght;
+      item.completed = item.completed;
+      lenght += 1;
+    });
+  }
+
   deleteItem = (btn) => {
     btn.forEach((btn, index) => {
       btn.addEventListener('click', () => {
         this.tasks = this.tasks.filter((item, i) => i !== index);
-        let lenght = 0;
-        this.tasks.forEach((item) => {
-          item.desc = item.desc;
-          item.index = lenght;
-          item.completed = item.completed;
-          lenght += 1;
-        });
+        this.fixLength();
         localStorage.setItem('localTasks', JSON.stringify(this.tasks));
         window.location.reload();
       });
@@ -68,6 +72,35 @@ export default class todo {
 
   reload = (reloadBtn) => {
     reloadBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
+
+  completed = (check) => {
+    check.forEach((item, index) => {
+      const descInput = document.querySelector(`.desc${index}`);
+      item.addEventListener('change', () => {
+        if (item.checked === true) {
+          this.tasks[index].completed = true;
+          localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+          descInput.classList.add('completed');
+        } else {
+          this.tasks[index].completed = false;
+          localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+          descInput.classList.remove('completed');
+        }
+        window.location.reload();
+      });
+    });
+  };
+
+  clearAll = (btnClear, checkedIndex) => {
+    btnClear.addEventListener('click', () => {
+      const result = this.tasks.filter((elem, index) => checkedIndex.indexOf(index) === -1);
+      this.tasks = result;
+      this.fixLength();
+
+      localStorage.setItem('localTasks', JSON.stringify(this.tasks));
       window.location.reload();
     });
   }
