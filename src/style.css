@@ -70,12 +70,22 @@ body {
 }
 
 .add-input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.desc {
   width: 100%;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: none;
   outline: none;
+  background-color: transparent;
   font-size: 16px;
 }
 
@@ -102,6 +112,20 @@ body {
   height: 30px;
 }
 
+.trash-image {
+  width: 30px;
+  height: 30px;
+  display: none;
+}
+
+.trash-image-show {
+  display: inline;
+}
+
+.more-image-hide {
+  display: none;
+}
+
 .clear {
   width: 100%;
 }
@@ -111,4 +135,8 @@ body {
   font-size: 18px;
   color: #777575;
   height: 50px;
+}
+
+.selected {
+  background-color: #fffec4;
 }
