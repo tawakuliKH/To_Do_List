@@ -140,3 +140,7 @@ body {
 .selected {
   background-color: #fffec4;
 }
+
+.completed {
+  text-decoration: line-through;
+}
