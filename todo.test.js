@@ -1,4 +1,4 @@
-import Todo from './src/todo';
+import Todo from './src/todo.js';
 
 describe('ToDo', () => {
   let todo;
@@ -16,7 +16,7 @@ describe('ToDo', () => {
     todo.addTask('Task 1', false, 0);
     expect(todo.tasks.length).toBe(1);
   });
-  
+
   test('delet a task', () => {
     todo.addTask('Task 1', false, 0);
     todo.addTask('Task 2', false, 1);
