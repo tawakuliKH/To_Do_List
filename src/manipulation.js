@@ -40,8 +40,11 @@ const display = () => {
 
   // Delete
   const trashBtn = document.querySelectorAll('.trash-image');
-  task.deleteItem(trashBtn);
-
+  trashBtn.forEach((trashBtn, index) => {
+    trashBtn.addEventListener('click', () => {
+      task.deleteItem(index);
+    });
+  });
   // Edit
   const descInput = document.querySelectorAll('.desc');
   task.updateList(descInput);

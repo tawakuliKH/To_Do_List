@@ -4,6 +4,10 @@ export default class todo {
     this.tasks = [];
   }
 
+  save() {
+    localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+  }
+
   addTask = (desc, completed, index) => {
     const task = {
       desc,
@@ -11,7 +15,7 @@ export default class todo {
       index,
     };
     this.tasks.push(task);
-    localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+    this.save();
     window.location.reload();
   };
 
@@ -47,16 +51,12 @@ export default class todo {
     });
   }
 
-  deleteItem = (btn) => {
-    btn.forEach((btn, index) => {
-      btn.addEventListener('click', () => {
-        this.tasks = this.tasks.filter((item, i) => i !== index);
-        this.fixLength();
-        localStorage.setItem('localTasks', JSON.stringify(this.tasks));
-        window.location.reload();
-      });
-    });
-  }
+  deleteItem = (index) => {
+    this.tasks = this.tasks.filter((item, i) => i !== index);
+    this.fixLength();
+    localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+    window.location.reload();
+  };
 
   updateList = (descInput) => {
     descInput.forEach((desc, index) => {
