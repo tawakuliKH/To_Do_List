@@ -35,4 +35,13 @@ describe('ToDo', () => {
     todo.updateList('Hi', 0);
     expect(todo.tasks[0].desc).toBe('Hi');
   });
+
+  test('Clear All tasks', () => {
+    todo.addTask('Do the Home work', true, 0);
+    todo.addTask('Wash', true, 0);
+    todo.addTask('Go School', false, 0);
+    const checkedIndex = todo.completedTasks();
+    todo.clearAll(checkedIndex);
+    expect(todo.tasks.length).toBe(1);
+  });
 });
