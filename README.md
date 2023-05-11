@@ -137,7 +137,7 @@ You can deploy this project using:
 
 - GitHub: [@tawakuliKH](https://github.com/tawakuliKH)
 - Twitter: [@twitterhandle](https://twitter.com/KhadimTawakuli)
-- LinkedIn: [@Mori](https://linkedin.com/in/linkedinhandle)
+- LinkedIn: [@Morteza Tawakuli](https://www.linkedin.com/in/morteza-tawakuli-904818170/)
 
 
 
@@ -157,7 +157,7 @@ You can deploy this project using:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/tawakuliKH/To-Do-List/issues).
+Feel free to check the [issues page](https://github.com/tawakuliKH/To_Do_List/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
