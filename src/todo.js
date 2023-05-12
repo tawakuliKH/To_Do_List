@@ -58,16 +58,10 @@ export default class todo {
     window.location.reload();
   };
 
-  updateList = (descInput) => {
-    descInput.forEach((desc, index) => {
-      desc.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-          this.tasks[index].desc = desc.value;
-          localStorage.setItem('localTasks', JSON.stringify(this.tasks));
-          window.location.reload();
-        }
-      });
-    });
+  updateList = (desc, index) => {
+    this.tasks[index].desc = desc;
+    localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+    window.location.reload();
   }
 
   reload = (reloadBtn) => {
@@ -76,32 +70,34 @@ export default class todo {
     });
   }
 
-  completed = (check) => {
-    check.forEach((item, index) => {
-      const descInput = document.querySelector(`.desc${index}`);
-      item.addEventListener('change', () => {
-        if (item.checked === true) {
-          this.tasks[index].completed = true;
-          localStorage.setItem('localTasks', JSON.stringify(this.tasks));
-          descInput.classList.add('completed');
-        } else {
-          this.tasks[index].completed = false;
-          localStorage.setItem('localTasks', JSON.stringify(this.tasks));
-          descInput.classList.remove('completed');
-        }
-        window.location.reload();
-      });
-    });
+  completed = (item, index, descInput) => {
+    if (item.checked === true) {
+      this.tasks[index].completed = true;
+      localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+      descInput.classList.add('completed');
+    } else {
+      this.tasks[index].completed = false;
+      localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+      descInput.classList.remove('completed');
+    }
+    window.location.reload();
   };
 
-  clearAll = (btnClear, checkedIndex) => {
-    btnClear.addEventListener('click', () => {
-      const result = this.tasks.filter((elem, index) => checkedIndex.indexOf(index) === -1);
-      this.tasks = result;
-      this.fixLength();
-
-      localStorage.setItem('localTasks', JSON.stringify(this.tasks));
-      window.location.reload();
+  completedTasks = () => {
+    const checkedIndex = [];
+    this.tasks.forEach((completedTask, index) => {
+      if (completedTask.completed === true) {
+        checkedIndex.push(index);
+      }
     });
+    return checkedIndex;
+  }
+
+  clearAll = (checkedIndex) => {
+    const result = this.tasks.filter((elem, index) => checkedIndex.indexOf(index) === -1);
+    this.tasks = result;
+    this.fixLength();
+    localStorage.setItem('localTasks', JSON.stringify(this.tasks));
+    window.location.reload();
   }
 }

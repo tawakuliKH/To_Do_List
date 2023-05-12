@@ -1,4 +1,4 @@
-import Todo from './todo.js';
+import Todo from './todo';
 
 // Display list
 const display = () => {
@@ -45,9 +45,16 @@ const display = () => {
       task.deleteItem(index);
     });
   });
+
   // Edit
   const descInput = document.querySelectorAll('.desc');
-  task.updateList(descInput);
+  descInput.forEach((desc, index) => {
+    desc.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        task.updateList(desc.value, index);
+      }
+    });
+  });
 
   // reload
   const reloadBtn = document.querySelector('.reload-image');
@@ -55,17 +62,19 @@ const display = () => {
 
   // Completed
   const check = document.querySelectorAll('.checkbox');
-  task.completed(check);
+  check.forEach((item, index) => {
+    const descInput = document.querySelector(`.desc${index}`);
+    item.addEventListener('change', () => {
+      task.completed(item, index, descInput);
+    });
+  });
 
   // Clear All
   const btnClear = document.querySelector('.btn-clear');
-  const checkedIndex = [];
-  task.tasks.forEach((completedTask, index) => {
-    if (completedTask.completed === true) {
-      checkedIndex.push(index);
-    }
+  const checkedIndex = task.completedTasks();
+  btnClear.addEventListener('click', () => {
+    task.clearAll(checkedIndex);
   });
-  task.clearAll(btnClear, checkedIndex);
 };
 
 export default display;
